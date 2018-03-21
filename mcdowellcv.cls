@@ -80,7 +80,6 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 %                                    Constants                                  -
 %--------------------------------------------------------------------------------
 \def\afterheaderspace{3pt}
-%\def\beforesectionheaderspace{4.75pt}
 \def\beforesectionheaderspace{3pt}
 \def\sectionheadermargin{6pt}
 \def\aftersectionheaderspace{-4pt}
@@ -90,7 +89,6 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 \def\aftermultilinesubsectionheaderspace{-6pt}
 \def\afteremptysubsectionheaderspace{3pt}
 \def\subsectionmargin{9pt}
-%\def\aftersubsectionspace{4pt}
 \def\aftersubsectionspace{1pt}
 
 %--------------------------------------------------------------------------------
@@ -176,7 +174,8 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 
 \newenvironment{cvsubsection}[5][]{
 	\headers
-	%\begin{cvsubsection}{\mbox{Obscure Startup} \newline \mbox{\normalfont \textit{Software and Testing Intern}}} {Suburb, Minnesota\break 	\mbox{\normalfont December 2017 ? Present}}	
+	% These toggles check which fields are populated,
+	% which is important for when we modify the spacing later
 	\toggletrue{upperleft}
 	\toggletrue{lowerleft}
 	\toggletrue{upperright}
@@ -186,10 +185,9 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 	\notblank{#4}{}{\togglefalse{upperright}}
 	\notblank{#5}{}{\togglefalse{lowerright}}
 
-	\ifboolexpr{togl {upperleft} or
-			togl {upperright} and
-			togl {lowerleft} or
+	\ifboolexpr{togl {lowerleft} or
 			togl {lowerright}}{
+		%If a bottom field is filled out
 		\begin{tabu} to \textwidth { X[l,p] X[r,p] }
 			\mbox{\textbf{#2}} & \mbox{\textbf{#4}} \\
 			\mbox{\textit{#3}} & \mbox{#5}
@@ -197,11 +195,13 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 		\vspace*{\afterdoublelinesubsectionheaderspace}
 	}{
 		\ifboolexpr{togl {upperleft} or togl {upperright}}{
+			%If only top fields are filled out
 			\begin{tabu} to 1\textwidth { X[l,p] X[r,p] }
 				\mbox{\textbf{#2}} & \mbox{\textbf{#4}}
 			\end{tabu}
 			\vspace*{\aftersinglelinesubsectionheaderspace}
 		}{
+			%If no field is filled out
 			\vspace*{\afteremptysubsectionheaderspace}
 		}
 	}
@@ -211,6 +211,5 @@ Ligatures={TeX, NoCommon, NoDiscretionary}]{\mainfontface}
 }
 {
 	\end{adjustwidth}
-	%\vspace*{\aftersubsectionspace}
 }
 \makeatother
