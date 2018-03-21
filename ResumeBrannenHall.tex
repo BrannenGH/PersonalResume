@@ -1,0 +1,221 @@
+% !TEX encoding = UTF-8 Unicode
+%% The MIT License (MIT)
+%%
+%% Copyright (c) 2015 Daniil Belyakov
+%% Modified by Brannen Hall
+%%
+%% Permission is hereby granted, free of charge, to any person obtaining a copy
+%% of this software and associated documentation files (the "Software"), to deal
+%% in the Software without restriction, including without limitation the rights
+%% to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+%% copies of the Software, and to permit persons to whom the Software is
+%% furnished to do so, subject to the following conditions:
+%%
+%% The above copyright notice and this permission notice shall be included in all
+%% copies or substantial portions of the Software.
+%%
+%% THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+%% IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+%% FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+%% AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+%% LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+%% OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+%% SOFTWARE.
+
+% The font could be set to Windows-specific Calibri by using the 'calibri' option
+\documentclass[12pt]{mcdowellcv}
+
+\usepackage{etoolbox}
+
+\newtoggle{real}
+\toggletrue{real}
+%\togglefalse{real}
+
+% For mathematical symbols
+\usepackage{amsmath}
+\usepackage{fontspec}
+
+%\setmainfont[Ligatures=TeX, WordSpace={1.2}]{Helvetica Neue}
+\newcommand{\keywords}{Swift, C\#, F\#, Java, Python, Bash, LaTeX, Linux, C, team, learn, people, javascript, test-driven development, TDD}
+\iftoggle{real}{
+    \usepackage[pdfauthor={Brannen Hall},
+                pdftitle={Brannen Hall Resume},
+                pdfkeywords={\keywords},
+                pdfproducer={TeX with bibtex and hyperref},
+                pdfcreator={XeLaTeX},hidelinks]{hyperref}
+}{
+    \usepackage[pdfauthor={Firstname Lastname},
+                pdftitle={Firstname Lastname Resume},
+                pdfkeywords={\keywords},
+                pdfproducer={TeX with bibtex and hyperref},
+                pdfcreator={XeLaTeX},hidelinks]{hyperref}
+}
+
+
+
+\newcommand{\customspacing}{0.55em}
+\newcommand{\sectionspacing}{0.1cm}
+
+
+% Set applicant's personal data for header
+\iftoggle{real}{
+	\name{Brannen Hall}
+}{
+	\name{Firstname Lastname}
+}
+\iftoggle{real}{
+	\address{
+		\href{http://maps.apple.com/?address=145+106th+Avenue+NW,+Coon+Rapids+MN,+55448}{145 106th Avenue NW \linebreak \mbox{Coon Rapids, MN 55448}} \linebreak \href{https://www.linkedin.com/in/brannenghh}{linkedin.com/in/brannenghh}
+	}
+}{
+	\address{
+		123 Test Street NE \linebreak My Test Address, MN 55434 \linebreak {linkedin.com/in/anon}
+	}
+}
+\iftoggle{real}{
+	\contacts{
+		\href{tel:612-412-4255}{612-412-4255}  \linebreak \mbox{\hspace{-0.8in}\href{mailto:brannen@hurtadohall.me}{Brannen@HurtadoHall.me}} \linebreak \mbox{\hspace{-0.8in} \href{https://www.github.com/brannenghh}{github.com/brannenghh}}
+	}
+}{
+	\contacts{
+		612-867-5309 \linebreak \mbox{{FirstName@domain.me}} \linebreak \mbox{\hspace{-0.8in}{github.com/me}}
+	}
+}
+
+
+
+\begin{document}
+	% Print the header
+	\makeheader
+	\vspace{\sectionspacing}
+	\begin{cvsection}{Education}
+		\iftoggle{real}{
+			\begin{cvsubsection}{University of Minnesota — Twin Cities}{Bachelor of Arts in Computer Science}{Minneapolis, Minnesota}{Expected December 2019}
+		}{
+			\begin{cvsubsection}{State University}{Bachelor of Arts in Computer Science}{Twin Cities, Minnesota}{Expected December 2019}
+		}
+			\begin{itemize}
+				\item 3.7 GPA
+				\item Dean's List Fall 2017
+				\item Dean's \iftoggle{real}{Freshman Research}{Research} Scholar
+				\item \iftoggle{real}{Robert P. Sands Endowed Scholarship recipient}{Some scholarship}
+				\item \iftoggle{real}{University of Minnesota App Developers Student Group member}{University App Developers Student Group member}
+				%\item \iftoggle{real}{UMN Cloud Computing Student Group Member}{University Cloud Computing Student Group Member}
+			\end{itemize}
+		\end{cvsubsection}
+%		\begin{cvsubsection}{\mbox{{Anoka–Ramsey Community College}} \newline {\normalfont \textit{Minnesota Transfer Curriculum}}}{}{Coon Rapids, Minnesota\break {\normalfont August 2015 – May 2016}}
+%			\vspace{\customspacing}
+%			%\vspace{\baselineskip}
+%			\begin{itemize}
+%				\item 4.0 GPA
+%				\item Dean's List Fall 2015 and Spring 2016
+%			\end{itemize}
+%		\end{cvsubsection}
+	\end{cvsection}	
+	% Print the content
+	\vspace{\sectionspacing}
+	\begin{cvsection}{Work Experience}
+		\iftoggle{real}{
+        			\begin{cvsubsection}{IndusTrack}{Software and Testing Intern}
+			{Plymouth, Minnesota}{December 2017 – Present}
+		}{
+			\begin{cvsubsection}{Obscure Startup}{Software and Testing Intern}
+			{Suburb, Minnesota}{December 2017 – Present}
+		}
+		 	\begin{itemize}
+				%\item Improve Azure sync service in a Xamarin Application
+				%\item Configure Xamarin service to do cool stuff
+				\item Maintain a Xamarin application
+		 		\item Write unit tests for a Xamarin application in F\# and C\# with FOQ, reflection, and NUnit
+				\item Write unit tests for an Angular application
+				\item Create F\# bindings for service states, allowing new tests to be scripted quickly in a REPL loop
+			\end{itemize}
+		\end{cvsubsection}
+		\iftoggle{real}{
+			\begin{cvsubsection}{University of Minnesota — Twin Cities}{Research Assistant}
+			{Minneapolis, Minnesota}{January 2017 – June 2017}
+		}{
+			\begin{cvsubsection}{University}{Research Assistant}
+			{Twin Cities, Minnesota}{January 2017 – June 2017}
+		}
+			\begin{itemize}
+				\item Built a web application for displaying information about the \iftoggle{real}{Immigration History Research Center's}{research center's} documents
+				\item Used Typescript, MongoDB, express.js, mongoose, Bootstrap, and jQuery
+				\item Employed Scala to query the \iftoggle{real}{Archive's}{center's} website, extract the appropriate data, and save it to MongoDB
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+%	\begin{cvsection}{\uppercase{Work Experience}}
+%		\begin{cvsubsection}{\mbox{\href{http://www.assurancemfg.com}{Assurance Manufacturing}} \newline {\normalfont \textit{Punch Press Operator}}}{}{Coon Rapids, Minnesota\break \mbox{\normalfont May 2016 – June 2016}}
+%			\vspace{\customspacing}
+%			\begin{itemize}
+%				\item	Communicated with management on the status of projects
+%				\item Measured parts and made corrective action to guarantee tolerances are met
+%				\item Ensured the safe operation of punch presses
+%			\end{itemize}
+%		\end{cvsubsection}
+%		\begin{cvsubsection}{Sears \newline \mbox{\normalfont \textit{Hardlines Merchandising, Pricing and Sales}}}{}{Coon Rapids, Minnesota\break \mbox{\normalfont June 2014 – March 2016}}
+%			\vspace{\customspacing}
+%			\begin{itemize}
+%				\item Assured tasks were completed by company set deadlines by delegating tasks to a small team
+%				\item Resolved escalated customer issues
+%			\end{itemize}
+%		\end{cvsubsection}			
+%	\end{cvsection}
+	\vspace{\sectionspacing}
+	\begin{cvsection}{Projects}
+		\begin{cvsubsection}{\iftoggle{real}{Social Todo}{Project One}}{}{}{}
+			\begin{itemize}
+				\item Developed a RESTful API service in Vapor using Swift for an iOS application
+				\item Scaled application by using event loops to handle multiple requests simultaneously
+				\item Implemented promises to query Facebook in an asynchronous manner
+				\item Sped up database calls by implementing custom SQL queries
+				\item Deployed to Digital Ocean using Docker
+				%\item Used git to manage source code
+			\end{itemize}
+		\end{cvsubsection}
+		\begin{cvsubsection}{\iftoggle{real}{Transit Planner}{Project Two}}{}{}{}
+			\begin{itemize}
+				\item Developed an iOS application for querying the closest park and ride
+				\item Queried MapKit to get the transit distance between two nodes and the driving distance between the nodes and user provided locations
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+	\begin{cvsection}{\uppercase{Volunteer Experience}}
+		\iftoggle{real}{
+			\begin{cvsubsection}
+			{North Metro Adult Basic Education}{English as a Second Language Tutor}
+			{Anoka, Minnesota}{August 2016 – September 2017}
+		}{
+			\begin{cvsubsection}
+			{Adult Basic Education}{English as a Second Language Tutor}
+			{Town, Minnesota}{August 2016 – September 2017}
+		}
+			\begin{itemize}
+				\item Assisted ESL students with basic computer literacy
+				\item Worked with ESL students on pronunciation, grammar, and reading comprehension
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+
+%	\begin{cvsection}{\uppercase{Personal Projects}}
+%		\begin{cvsubsection}{Transit Planner}{}{}
+%			\begin{itemize}
+%				\item Developed an iOS application for querying the closest park and ride
+%				\item Queried MapKit to get the transit distance between two nodes and the driving distance between the nodes and user provided locations
+%			\end{itemize}
+%		\end{cvsubsection}
+%	\end{cvsection}
+	\vspace{\sectionspacing}
+	\begin{cvsection}{Technical Skills}
+		\begin{cvsubsection}{}{}{}{}
+			\begin{itemize}
+				\item Languages:  Swift, C, C\#, F\#, Java, Python, Bash, SQL
+				\item Platforms: Azure, ASP.NET, iOS, MongoDB (including casbah and mongoose), Vapor
+				\item Tools: Visual Studio, Microsoft TFS, Git, Praat, IntelliJ, RIFF based file formants (i.e. WAVE files)
+				\item Linux including Fedora Linux, openSUSE, Ubuntu, Debian, RHEL, SLED, and SLES
+			\end{itemize}
+		\end{cvsubsection}
+	\end{cvsection}
+\end{document}
+} 
